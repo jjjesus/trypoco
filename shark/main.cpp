@@ -9,6 +9,7 @@
 
 
 void print_frame_numbers(Poco::JSON::Array::Ptr root);
+void print_data_data(Poco::JSON::Array::Ptr root);
 
 int main(int argc, char** argv)
 {
@@ -23,6 +24,7 @@ int main(int argc, char** argv)
         Poco::Dynamic::Var result = parser.parse(json_str);
         Poco::JSON::Array::Ptr json = result.extract<Poco::JSON::Array::Ptr>();
         print_frame_numbers(json);
+        print_data_data(json);
     } catch (std::exception& e) {
         std::cout << e.what() << std::endl;
     }
@@ -33,7 +35,9 @@ int main(int argc, char** argv)
 void print_frame_numbers(Poco::JSON::Array::Ptr root)
 {
     for (Poco::JSON::Array::ConstIterator it = root->begin();
-         it != root->end(); ++it) {
+         it != root->end();
+         ++it) {
+
         Poco::JSON::Object::Ptr obj = it->extract<Poco::JSON::Object::Ptr>();
         Poco::JSON::Object::Ptr source = obj->getObject("_source");
         Poco::JSON::Object::Ptr layers = source->getObject("layers");
@@ -41,6 +45,7 @@ void print_frame_numbers(Poco::JSON::Array::Ptr root)
         Poco::Dynamic::Var frame_number_var = frame->get("frame.number");
         std::string frame_num = frame_number_var.toString();
         std::cout << "frame_num:" << frame_num << std::endl;
+
     }
     //std::string root_key = "_source";
     //std::string key = "layers";
@@ -56,5 +61,21 @@ void print_frame_numbers(Poco::JSON::Array::Ptr root)
         //no check of whether it is an object
         //std::cout<<it->first<<"\n";
     //}
+}
+
+void print_data_data(Poco::JSON::Array::Ptr root)
+{
+    for (Poco::JSON::Array::ConstIterator it = root->begin();
+         it != root->end();
+         ++it) {
+
+        Poco::JSON::Object::Ptr obj = it->extract<Poco::JSON::Object::Ptr>();
+        Poco::JSON::Object::Ptr source = obj->getObject("_source");
+        Poco::JSON::Object::Ptr layers = source->getObject("layers");
+        Poco::JSON::Object::Ptr data = layers->getObject("data");
+        Poco::Dynamic::Var data_data_var = data->get("data.data");
+        std::string data_data = data_data_var.toString();
+        std::cout << "data_data:" << data_data << std::endl;
+    }
 }
 
