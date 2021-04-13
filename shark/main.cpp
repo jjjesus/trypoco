@@ -35,9 +35,12 @@ void print_frame_numbers(Poco::JSON::Array::Ptr root)
     for (Poco::JSON::Array::ConstIterator it = root->begin();
          it != root->end(); ++it) {
         Poco::JSON::Object::Ptr obj = it->extract<Poco::JSON::Object::Ptr>();
-        for (auto const& name: obj->getNames()) {
-            std::cout << "name:" << name << std::endl;
-        }
+        Poco::JSON::Object::Ptr source = obj->getObject("_source");
+        Poco::JSON::Object::Ptr layers = source->getObject("layers");
+        Poco::JSON::Object::Ptr frame = layers->getObject("frame");
+        Poco::Dynamic::Var frame_number_var = frame->get("frame.number");
+        std::string frame_num = frame_number_var.toString();
+        std::cout << "frame_num:" << frame_num << std::endl;
     }
     //std::string root_key = "_source";
     //std::string key = "layers";
