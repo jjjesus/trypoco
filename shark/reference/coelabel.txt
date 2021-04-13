@@ -1,0 +1,123 @@
+
+C:\ccm_wa\mfrf - Copy\MFRFS_Interface_Design_Description\MFRFS_Interface_Design_Description\Code\Messages\MessageLabels_common_types.h
+
+Here's the list of labels the TRUI registers for (i.e. receives):
+
+
+MFRFS Messages
+---------------
+MfrfSystemHeartbeat_MESSAGE_LABEL
+Mfrf_BIT_ResultsRequest_MESSAGE_LABEL
+Mfrf_BIT_ResultsReport_MESSAGE_LABEL
+KuCramSearchRequest_MESSAGE_LABEL
+KuCramSearchStatus_MESSAGE_LABEL
+SetInstrumentationOptionsMsg_MESSAGE_LABEL
+INSTR_SaveLogsAbortMsg_MESSAGE_LABEL
+INSTR_FTP_ServerInfoMsg_MESSAGE_LABEL
+INSTR_SaveLogsStatusMsg_MESSAGE_LABEL
+MfrfSystemStateRequest_MESSAGE_LABEL
+MfrfTemperatures_MESSAGE_LABEL
+MfrfDiagnosticsRequest_MESSAGE_LABEL
+RapHeartbeatMsg_MESSAGE_LABEL
+StopAllTasksMsg_MESSAGE_LABEL
+MfrfReconfigureArrayRequest_MESSAGE_LABEL
+MfrfReconfigureArrayResponse_MESSAGE_LABEL
+MfrfSystemVersionRequest_MESSAGE_LABEL
+MfrfSystemVersionResponse_MESSAGE_LABEL
+Mfrf_KRFS_SystemState_MESSAGE_LABEL
+Mfrf_KRFS_SystemStateRequest_MESSAGE_LABEL
+MfrfCoolantTemperature_MESSAGE_LABEL
+MfrfAutoReconfigStatusRequest_MESSAGE_LABEL
+MfrfAutoReconfigStatusResponse_MESSAGE_LABEL
+MfrfAutoReconfigInProgress_MESSAGE_LABEL
+MfrfAutoReconfigComplete_MESSAGE_LABEL
+DGC_StatusReportMsg_MESSAGE_LABEL
+DGC_StatusReportMsg_MESSAGE_LABEL + 1
+DGC_StatusReportMsg_MESSAGE_LABEL + 2
+DGC_StatusReportMsg_MESSAGE_LABEL + 3
+ 
+Power Messages
+--------------
+PCU_StatusMessage_MESSAGE_LABEL        
+PCU_ControlStatusMessage_MESSAGE_LABEL 
+PCU_KRFS_CommandMessage_MESSAGE_LABEL  
+CswLruPowerupNotification_MESSAGE_LABEL
+PCU_GPS_PowerReqMessage_MESSAGE_LABEL  
+PCU_GPS_PowerRespMessage_MESSAGE_LABEL 
+ 
+INS/GPS Messages
+-------------------
+Mfrf_ETALIN_Heartbeat_MESSAGE_LABEL          
+PCU_ControlCommandMessage_MESSAGE_LABEL      
+PCU_ZeroizeCommandMessage_MESSAGE_LABEL      
+Mfrf_INS_GPS_ConfigDataRequest_MESSAGE_LABEL 
+Mfrf_INS_GPS_ConfigDataResponse_MESSAGE_LABEL
+ 
+Heat Exchanger
+---------------
+HeatExHeartbeatMessage_MESSAGE_LABEL
+ 
+AvsEmulator
+-------------
+AVS_StatusThreadMessage_MESSAGE_LABEL
+AVS_SystemInfoMessage_MESSAGE_LABEL  
+ 
+Solid State Drive Authentication
+--------------------------------
+Panels_StatusMessage_MESSAGE_LABEL
+Panels_ThreadMessage_MESSAGE_LABEL 
+
+
+08:00:08:00:  ??
+f8:00:00:00:  this is total udp payload length minus 8 bytes
+00:00:00:00:  ??
+d0:00:00:00:  data size, matches next field.  40 bytes less than udp payload length above
+d0:00:00:00:  msg size, matches field above.
+01:00:00:00:  src node id
+00:00:00:00:  sign and domain
+18:51:00:00:  label 5118 eTALIN Heartbeat
+64:00:00:00:  priority 100
+00:00:00:00:
+00:00:00:00:
+00:00:00:00:
+2c:00:00:00:
+f2:2f:16:19:
+ff:fe:1f:00:
+
+
+08:00:08:00:  ??
+40:00:00:00:  this is total udp payload length minus 8 bytes
+00:00:00:00:  ??
+18:00:00:00:  data size, matches next field.  40 bytes less than udp payload length above
+18:00:00:00:  msg size, matches field above.
+80:08:00:00:  src node id
+00:00:00:00:  sign and domain
+02:30:00:00:  label 3002 PCU_KRFS_Command
+00:00:00:00:  priority 0
+00:00:00:00:
+00:00:00:00:
+00:00:00:00:
+ab:00:00:00:
+
+
+08:00:08:00:  ??
+30:00:00:00:  this is total udp payload length minus 8 bytes
+00:00:00:00:  ??
+08:00:00:00:  data size, matches next field.  40 bytes less than udp payload length above
+08:00:00:00:  msg size, matches field above.
+01:00:00:00:  src node id
+00:00:00:00:  sign and domain
+ff:30:00:00:  label 30ff PCU_ControlStatus
+64:00:00:00:  priority 100
+00:00:00:00:
+
+08:00:08:00:  ??
+a0:00:00:00:  this is total udp payload length minus 8 bytes
+00:00:00:00:  ??
+78:00:00:00:  data size, matches next field.  40 bytes less than udp payload length above
+78:00:00:00:  msg size, matches field above.
+01:00:00:00:  src node id
+00:00:00:00:  sign and domain
+01:30:00:00:  label 3001 PCU_StatusMessageLabel
+64:00:00:00:  priority 100
+00:00:00:00:
