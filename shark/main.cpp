@@ -15,7 +15,7 @@ int main(int argc, char** argv)
     try {
 
         //read file
-        std::ifstream t("all5.json");
+        std::ifstream t("50.json");
         std::string json_str((std::istreambuf_iterator<char>(t)),
                     std::istreambuf_iterator<char>());
 
