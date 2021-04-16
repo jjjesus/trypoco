@@ -33,6 +33,10 @@ void parse2(Poco::AutoPtr<Poco::XML::Document>& pDoc)
                 pNode = it.nextNode();
                 if (pNode->nodeName() == "value") {
                     std::string text = pNode->innerText();
+                    size_t pos = text.find("0x");
+                    if (pos != std::string::npos) {
+                        text.erase(pos, 2);
+                    }
                     std::cout << text << " ";
                 }
                 pNode = it.nextNode();
