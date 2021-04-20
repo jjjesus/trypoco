@@ -13,6 +13,15 @@
 #include <streambuf>
 #include <string>
 
+#include <cctype>
+
+
+inline std::string& trim(std::string& str)
+{
+    str.erase(0, str.find_first_not_of(' '));       //prefixing spaces
+    str.erase(str.find_last_not_of(' ')+1);         //suffixing spaces
+    return str;
+}
 
 
 void parse2(Poco::AutoPtr<Poco::XML::Document>& pDoc)
@@ -28,6 +37,7 @@ void parse2(Poco::AutoPtr<Poco::XML::Document>& pDoc)
                 pNode = it.nextNode();
                 if (pNode->nodeName() == "name") {
                     std::string text = pNode->innerText();
+                    text = trim(text);
                     std::cout << text << " ";
                 }
                 pNode = it.nextNode();
@@ -37,37 +47,17 @@ void parse2(Poco::AutoPtr<Poco::XML::Document>& pDoc)
                     if (pos != std::string::npos) {
                         text.erase(pos, 2);
                     }
+                    text = trim(text);
                     std::cout << text << " ";
                 }
                 pNode = it.nextNode();
                 if (pNode->nodeName() == "comment") {
                     std::string text = pNode->innerText();
+                    text = trim(text);
                     std::cout << text << " ";
                 }
             }
             std::cout << std::endl;
-            pNode = it.nextNode();
-        }
-}
-
-void parse1(Poco::AutoPtr<Poco::XML::Document>& pDoc)
-{
-        Poco::XML::NodeIterator it(pDoc,
-            Poco::XML::NodeFilter::SHOW_ALL
-        );
-        Poco::XML::Node* pNode = it.nextNode();
-        while (pNode)
-        {
-            if (pNode->nodeName() == "comment") {
-                pNode = it.nextNode();
-                if (pNode->nodeName() != "#text") {
-                    continue;
-                }
-                std::cout<< "Tag Text: " << pNode->nodeValue() << std::endl;
-            }
-            std::cout << pNode->nodeName() << ":" << pNode->nodeValue() <<
-std::endl;
-            std::cout << pNode->innerText() << std::endl;
             pNode = it.nextNode();
         }
 }
